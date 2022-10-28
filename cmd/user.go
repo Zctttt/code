@@ -5,13 +5,13 @@ import (
 )
 
 type IUser interface {
-	SetStatus(status bool)
-	GetName() string   // 用户名字  前端调用
-	GetStep() int      // 获取当前步数
-	GetStatus() bool   // 获取当前状态 前端判断是否能摇色子
-	SetStep()          // 向下进行一步
-	ResetStep(num int) // 触发蛇 梯逻辑
-	Run()
+	GetName() string       // 用户名字  前端调用
+	GetStep() int          // 获取当前步数
+	GetStatus() bool       // 获取当前状态 前端判断是否能摇色子
+	SetStatus(status bool) // 设置状态
+	SetStep()              // 向下进行一步
+	ResetStep(num int)     // 触发蛇 梯逻辑
+	Run()                  // 执行
 }
 
 type User struct {
