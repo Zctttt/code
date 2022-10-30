@@ -1,4 +1,4 @@
-package cmd
+package svc
 
 import (
 	"time"
@@ -12,13 +12,19 @@ type IUser interface {
 	SetStep()              // 向下进行一步
 	ResetStep(num int)     // 触发蛇 梯逻辑
 	Run()                  // 执行
+	GetData() string
+	GetRoom() *Room
+	IsStop() bool
 }
 
 type User struct {
-	status bool
-	step   int64
-	name   string
 	run    chan struct{}
+	status bool
+	stop   bool
+	step   int64
+	room   *Room
+	name   string
+	data   string
 }
 
 func NewUser(name string) *User {
@@ -26,7 +32,9 @@ func NewUser(name string) *User {
 		name:   name,
 		step:   0,
 		status: false,
+		stop:   false,
 		run:    make(chan struct{}),
+		data:   "",
 	}
 }
 
@@ -46,7 +54,7 @@ func (u *User) GetStatus() bool {
 }
 
 func (u *User) SetStep() {
-	var t = time.Tick(time.Second)
+	var t = time.Tick(time.Second * 600)
 	var count = 0
 	for {
 		if count == 5 {
@@ -71,4 +79,15 @@ func (u *User) ResetStep(num int) {
 
 func (u *User) Run() {
 	u.run <- struct{}{}
+}
+
+func (u *User) GetData() string {
+	return u.data
+}
+func (u *User) GetRoom() *Room {
+	return u.room
+}
+
+func (u *User) IsStop() bool {
+	return u.stop
 }

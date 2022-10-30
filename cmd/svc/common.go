@@ -1,4 +1,4 @@
-package cmd
+package svc
 
 import (
 	"crypto/rand"

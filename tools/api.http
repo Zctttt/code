@@ -1,0 +1,66 @@
+POST localhost:8080/user/login
+Content-Type: application/json
+
+{
+  "name": "a",
+  "pass": "aaa"
+}
+
+###
+POST localhost:8080/user/login
+Content-Type: application/json
+
+{
+  "name": "b",
+  "pass": "bbb"
+}
+###
+POST localhost:8080/user/join_room
+Content-Type: application/json
+
+{
+"name": "a",
+"pass": "aaa"
+}
+###
+POST localhost:8080/user/join_room
+Content-Type: application/json
+
+{
+  "name": "b",
+  "pass": "bbb"
+}
+
+###
+POST localhost:8080/user/step_forward
+Content-Type: application/json
+
+{
+  "name": "a",
+  "pass": "aaa"
+}
+###
+POST localhost:8080/user/step_forward
+Content-Type: application/json
+
+{
+  "name": "b",
+  "pass": "bbb"
+}
+
+###
+POST localhost:8080/user/login_status
+Content-Type: application/json
+
+{
+  "name": "a",
+  "pass": "aaa"
+}
+###
+POST localhost:8080/user/login_status
+Content-Type: application/json
+
+{
+  "name": "b",
+  "pass": "bbb"
+}
